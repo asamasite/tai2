@@ -700,6 +700,8 @@ p:last-child { margin-bottom: 0; }
 .activity-list, .visit-steps { display: grid; grid-template-columns: repeat(2, 1fr); }
 .activity-list article { min-height: 230px; padding: 30px clamp(22px, 3vw, 46px); border-top: 1px solid var(--line); }
 .activity-list article:nth-child(even) { border-left: 1px solid var(--line); }
+.activity-more { display: inline-block; margin-top: 14px; color: var(--terra); font-size: 13px; font-weight: 600; }
+.activity-more:hover { color: var(--terra-hover); }
 .activity-list span, .visit-steps article > span { display: block; margin-bottom: 32px; color: var(--terra); font-family: var(--serif); font-size: 26px; }
 .activity-list h3 { margin: 0 0 14px; font-size: 25px; }
 .activity-list p { margin: 0; color: var(--ink-soft); font-size: 13px; line-height: 1.65; }
