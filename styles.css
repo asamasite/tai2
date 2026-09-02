@@ -739,7 +739,7 @@ p:last-child { margin-bottom: 0; }
 .about-doc p:not(.about-doc-role) + p { margin-top: 12px; }
 .about-doc { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 22px; align-items: start; padding: 22px 0; border-top: 1px solid var(--line); }
 .about-team-grid .about-doc:last-child { border-bottom: 1px solid var(--line); }
-.about-doc-ph { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; object-position: top; background: var(--ornament); filter: saturate(.82); }
+.about-doc-ph { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; background: var(--ornament); filter: saturate(.82); }
 span.about-doc-ph { display: grid; place-items: center; color: var(--terra); font-family: var(--serif); font-size: 24px; }
 .about-doc h3 { margin: 0; font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--ink); }
 .about-doc-role { margin: 4px 0 8px; color: var(--terra); font-size: 12px; font-weight: 600; }
