@@ -425,7 +425,7 @@ p:last-child { margin-bottom: 0; }
 .approach-support span { position: relative; z-index: 1; padding-inline: 22px; background: #f5f2eb; }
 
 /* --- четвёртый экран: методы центра --- */
-.methods-screen { padding: clamp(40px, 4vw, 64px) 0 clamp(52px, 5vw, 76px); background: #faf9f6; }
+.methods-screen { padding: clamp(40px, 4vw, 64px) 0 0; background: #faf9f6; }
 .methods-screen-inner { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(360px, .94fr) minmax(350px, 1fr); width: min(1540px, calc(100% - 80px)); margin: 0 auto; }
 .methods-copy { position: relative; display: flex; flex-direction: column; justify-content: center; min-width: 0; padding: 36px clamp(46px, 5vw, 86px) 36px 0; overflow: hidden; }
 .methods-copy > *:not(.methods-symbol) { position: relative; z-index: 1; }
@@ -446,17 +446,18 @@ p:last-child { margin-bottom: 0; }
 .method-row--active > span, .method-row:hover > span { color: var(--terra); }
 .method-row h3 { margin: 0 0 8px; color: var(--ink); font-family: var(--sans); font-size: 15px; font-weight: 600; line-height: 1.35; }
 .method-row p { max-width: 29ch; margin: 0; color: var(--ink); font-size: 12px; line-height: 1.55; }
-.treatment-principles { grid-column: 1 / -1; display: grid; grid-template-columns: 1.28fr repeat(4, 1fr); margin-top: 42px; padding-top: 46px; border-top: 1px solid var(--line); }
+.treatment-principles { position: relative; z-index: 0; grid-column: 1 / -1; display: grid; grid-template-columns: 1.28fr repeat(4, 1fr); margin-top: 42px; padding: 48px 0 clamp(58px, 5vw, 76px); color: var(--dark-text); }
+.treatment-principles::before { content: ""; position: absolute; z-index: -1; inset-block: 0; left: 50%; width: 100vw; background: var(--dark); transform: translateX(-50%); }
 .treatment-intro { display: flex; gap: 20px; padding-right: clamp(26px, 3vw, 46px); }
-.treatment-intro h3 { margin: 0; color: var(--graphite); font-size: clamp(29px, 2.2vw, 36px); line-height: 1.02; }
+.treatment-intro h3 { margin: 0; color: var(--dark-text); font-size: clamp(29px, 2.2vw, 36px); line-height: 1.02; }
 .treatment-intro em { display: block; margin-top: 12px; color: var(--terra); font-family: var(--serif); font-size: clamp(24px, 2vw, 31px); line-height: 1; }
-.treatment-principle { min-width: 0; padding: 0 clamp(24px, 2.7vw, 44px); border-left: 1px solid var(--line); }
-.principle-icon { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 19px; color: #a79f90; }
+.treatment-principle { min-width: 0; padding: 0 clamp(24px, 2.7vw, 44px); border-left: 1px solid var(--line-dark); }
+.principle-icon { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 19px; color: var(--dark-accent); }
 .principle-icon svg { width: 40px; height: 40px; fill: none; stroke: currentColor; stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
 .principle-icon--lotus { flex: none; border: 1px solid var(--terra); border-radius: 50%; color: var(--terra); }
 .principle-icon--lotus svg { width: 27px; height: 27px; }
-.treatment-principle h3 { margin: 0 0 14px; color: var(--ink); font-family: var(--sans); font-size: 15px; font-weight: 600; line-height: 1.4; }
-.treatment-principle p { margin: 0; color: var(--ink); font-size: 12px; line-height: 1.55; }
+.treatment-principle h3 { margin: 0 0 14px; color: var(--dark-text); font-family: var(--sans); font-size: 15px; font-weight: 600; line-height: 1.4; }
+.treatment-principle p { margin: 0; color: var(--dark-text-soft); font-size: 12px; line-height: 1.55; }
 
 /* --- оставшиеся экраны главной --- */
 .screen-kicker { margin: 0 0 32px; color: var(--terra); font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; }
@@ -509,6 +510,26 @@ p:last-child { margin-bottom: 0; }
 .booking-rating p { margin: 24px 0 9px; font-family: var(--serif); font-size: 22px; line-height: 1.1; }
 .booking-rating span { color: var(--ink-soft); font-size: 11px; }
 .booking-rating a { margin-top: 27px; color: var(--terra); font-size: 12px; font-weight: 600; }
+
+/* --- отзывы --- */
+.reviews.section { position: relative; overflow: hidden; padding: clamp(88px, 9vw, 138px) max(40px, calc((100vw - 1400px) / 2)); background: #f2eee5; }
+.reviews .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 60px; margin-bottom: clamp(58px, 6vw, 86px); }
+.reviews .section-heading h2 { max-width: 820px; margin: 0; color: var(--graphite); font-size: clamp(52px, 4.7vw, 74px); font-weight: 500; line-height: .96; letter-spacing: -.03em; }
+.reviews .eyebrow { margin-bottom: 27px; }
+.source-link { flex: none; margin-bottom: 7px; padding-bottom: 11px; border-bottom: 1px solid var(--terra); color: var(--terra); font-size: 12px; font-weight: 600; }
+.review-viewport { overflow: hidden; outline: none; }
+.review-viewport:focus-visible { outline: 2px solid var(--terra); outline-offset: 8px; }
+.review-track { display: flex; gap: 0; transition: transform .55s cubic-bezier(.22,.61,.36,1); will-change: transform; }
+.review-track blockquote { flex: 0 0 calc(100% / 3); min-height: 330px; display: flex; flex-direction: column; margin: 0; padding: 34px clamp(30px, 3.5vw, 54px); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.review-track blockquote:first-child { border-left: 0; padding-left: 0; }
+.review-track blockquote > div { color: var(--terra); font-size: 13px; letter-spacing: .2em; }
+.review-track blockquote p { margin: 34px 0 42px; color: var(--graphite); font-family: var(--serif); font-size: clamp(24px, 2vw, 31px); line-height: 1.18; letter-spacing: -.012em; }
+.review-track blockquote footer { margin-top: auto; color: var(--ink-soft); font-size: 11px; letter-spacing: .07em; }
+.review-controls { display: flex; align-items: center; justify-content: flex-end; gap: 18px; margin-top: 42px; }
+.review-controls button { display: grid; place-items: center; width: 46px; height: 46px; padding: 0; border: 1px solid #cfc7ba; border-radius: 50%; background: transparent; color: var(--terra); cursor: pointer; transition: color .2s ease, border-color .2s ease; }
+.review-controls button:hover:not(:disabled) { border-color: var(--terra); }
+.review-controls button:disabled { color: #b8b1a6; cursor: default; opacity: .55; }
+.review-status { min-width: 52px; color: var(--ink-soft); font-size: 12px; text-align: center; }
 
 .contacts-screen { position: relative; overflow: hidden; padding: clamp(90px, 9vw, 140px) 0; background: var(--dark); color: var(--dark-text); }
 .contacts-symbol { position: absolute; left: 30%; bottom: -38%; width: min(720px, 55vw); max-width: none; opacity: .025; filter: invert(1); pointer-events: none; }
@@ -924,6 +945,7 @@ p:last-child { margin-bottom: 0; }
   .method-row:first-child { border-top: 0; }
   .treatment-principles { grid-template-columns: repeat(2, 1fr); row-gap: 36px; }
   .treatment-intro { grid-column: 1 / -1; padding-bottom: 34px; border-bottom: 1px solid var(--line); }
+  .treatment-intro { border-color: var(--line-dark); }
   .treatment-principle:nth-child(odd) { border-left: 0; }
   .conditions-inner { grid-template-columns: 1fr; width: min(820px, calc(100% - 64px)); gap: 58px; }
   .conditions-heading { max-width: 620px; }
@@ -936,6 +958,8 @@ p:last-child { margin-bottom: 0; }
   .booking-action { padding-left: 0; border-left: 0; }
   .contacts-screen-inner { grid-template-columns: 1fr; width: min(820px, calc(100% - 64px)); gap: 70px; }
   .contacts-heading { max-width: 620px; }
+  .reviews .section-heading { align-items: start; flex-direction: column; gap: 28px; }
+  .review-track blockquote { flex-basis: 50%; }
   .inner-hero-inner { padding-left: 48px; }
   .inner-hero-copy { width: 60%; }
   .inner-hero-copy h1 { font-size: clamp(48px, 6vw, 62px); }
@@ -1008,7 +1032,7 @@ p:last-child { margin-bottom: 0; }
   .approach-support::before { display: none; }
   .approach-support::after { left: 45px; bottom: auto; top: 29px; }
   .approach-support span { padding: 0; }
-  .methods-screen { padding: 54px 0 64px; }
+  .methods-screen { padding: 54px 0 0; }
   .methods-screen-inner { display: block; width: auto; margin-inline: 20px; }
   .methods-copy { min-height: 500px; padding: 30px 0 48px; }
   .methods-symbol { right: -25%; width: 125%; }
@@ -1022,9 +1046,9 @@ p:last-child { margin-bottom: 0; }
   .method-row > span { font-size: 39px; }
   .method-row h3 { font-size: 15px; }
   .method-row p { max-width: 33ch; }
-  .treatment-principles { display: block; margin-top: 48px; padding-top: 38px; }
+  .treatment-principles { display: block; margin-top: 48px; padding: 42px 0 58px; }
   .treatment-intro { padding: 0 0 38px; border-bottom: 1px solid var(--line); }
-  .treatment-principle { display: grid; grid-template-columns: 58px minmax(0, 1fr); padding: 26px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+  .treatment-principle { display: grid; grid-template-columns: 58px minmax(0, 1fr); padding: 26px 0; border-left: 0; border-bottom: 1px solid var(--line-dark); }
   .treatment-principle .principle-icon { grid-row: 1 / 3; margin: 0; }
   .treatment-principle h3 { margin-bottom: 8px; }
   .conditions-screen { padding: 72px 0; }
@@ -1058,6 +1082,13 @@ p:last-child { margin-bottom: 0; }
   .contacts-details > div { min-height: 0; padding: 26px 0; }
   .contacts-details > div:nth-child(even) { border-left: 0; }
   .contacts-details p, .contacts-details a { font-size: 27px; }
+  .reviews.section { padding: 72px 20px; }
+  .reviews .section-heading { margin-bottom: 52px; }
+  .reviews .section-heading h2 { font-size: clamp(43px, 12vw, 56px); }
+  .source-link { line-height: 1.5; }
+  .review-track blockquote { flex-basis: 100%; min-height: 350px; padding: 30px 0; border-left: 0; }
+  .review-track blockquote p { font-size: 27px; }
+  .review-controls { justify-content: space-between; }
   .inner-hero { min-height: auto; }
   .inner-hero-inner { display: block; min-height: auto; padding: 110px 20px 0; }
   .inner-hero-copy { width: 100%; padding-bottom: 58px; }

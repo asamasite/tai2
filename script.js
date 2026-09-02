@@ -56,3 +56,34 @@ document.querySelectorAll('.faq details').forEach((item) => {
     });
   });
 });
+
+const reviewViewport = document.querySelector('.review-viewport');
+const reviewTrack = document.querySelector('.review-track');
+const reviewCards = reviewTrack ? [...reviewTrack.querySelectorAll('blockquote')] : [];
+const reviewPrev = document.querySelector('[data-review-prev]');
+const reviewNext = document.querySelector('[data-review-next]');
+const reviewStatus = document.querySelector('.review-status');
+
+if (reviewViewport && reviewTrack && reviewCards.length && reviewPrev && reviewNext) {
+  let reviewIndex = 0;
+
+  const visibleReviews = () => window.innerWidth <= 720 ? 1 : window.innerWidth <= 1040 ? 2 : 3;
+  const updateReviews = () => {
+    const visible = visibleReviews();
+    const maxIndex = Math.max(0, reviewCards.length - visible);
+    reviewIndex = Math.min(reviewIndex, maxIndex);
+    reviewTrack.style.transform = `translate3d(-${reviewIndex * (100 / visible)}%, 0, 0)`;
+    reviewPrev.disabled = reviewIndex === 0;
+    reviewNext.disabled = reviewIndex === maxIndex;
+    if (reviewStatus) reviewStatus.textContent = `${reviewIndex + 1} / ${reviewCards.length}`;
+  };
+
+  reviewPrev.addEventListener('click', () => { reviewIndex -= 1; updateReviews(); });
+  reviewNext.addEventListener('click', () => { reviewIndex += 1; updateReviews(); });
+  reviewViewport.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') reviewPrev.click();
+    if (event.key === 'ArrowRight') reviewNext.click();
+  });
+  window.addEventListener('resize', updateReviews);
+  updateReviews();
+}
