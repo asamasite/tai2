@@ -563,6 +563,12 @@ p:last-child { margin-bottom: 0; }
 .reviews .section-heading h2 { max-width: 820px; margin: 0; color: var(--graphite); font-size: clamp(52px, 4.7vw, 74px); font-weight: 500; line-height: .96; letter-spacing: -.03em; }
 .reviews .eyebrow { margin-bottom: 27px; }
 .source-link { flex: none; margin-bottom: 7px; padding-bottom: 11px; border-bottom: 1px solid var(--terra); color: var(--terra); font-size: 12px; font-weight: 600; }
+.reviews-rating { flex: none; display: flex; align-items: center; gap: 18px; margin-bottom: 6px; }
+.reviews-rating > strong { color: var(--terra); font-family: var(--serif); font-size: clamp(52px, 5vw, 68px); font-weight: 500; line-height: .8; }
+.reviews-rating > div { display: grid; gap: 4px; }
+.reviews-rating p { margin: 0; color: var(--ink); font-size: 13px; line-height: 1.35; max-width: 18ch; }
+.reviews-rating span { color: var(--ink-soft); font-size: 11px; }
+.reviews-rating a { margin-top: 3px; color: var(--terra); font-size: 12px; font-weight: 600; }
 .review-viewport { overflow: hidden; outline: none; }
 .review-viewport:focus-visible { outline: 2px solid var(--terra); outline-offset: 8px; }
 .review-track { display: flex; gap: 0; transition: transform .55s cubic-bezier(.22,.61,.36,1); will-change: transform; }
@@ -577,19 +583,20 @@ p:last-child { margin-bottom: 0; }
 .review-controls button:disabled { color: #b8b1a6; cursor: default; opacity: .55; }
 .review-status { min-width: 52px; color: var(--ink-soft); font-size: 12px; text-align: center; }
 
-.contacts-screen { position: relative; overflow: hidden; padding: clamp(90px, 9vw, 140px) 0; background: var(--dark); color: var(--dark-text); }
-.contacts-symbol { position: absolute; left: 30%; bottom: -38%; width: min(720px, 55vw); max-width: none; opacity: .025; filter: invert(1); pointer-events: none; }
+.contacts-screen { position: relative; overflow: hidden; padding: clamp(90px, 9vw, 140px) 0; background: var(--paper-soft); color: var(--ink); }
+.contacts-symbol { position: absolute; left: 30%; bottom: -38%; width: min(720px, 55vw); max-width: none; opacity: .05; pointer-events: none; }
 .contacts-screen-inner { position: relative; z-index: 1; display: grid; grid-template-columns: .95fr 1.25fr; gap: clamp(80px, 10vw, 170px); width: min(1400px, calc(100% - 100px)); margin: 0 auto; }
-.contacts-heading h2 { color: var(--dark-text); }
-.contacts-heading h2 em { color: var(--dark-accent); }
+.contacts-heading h2 { color: var(--graphite); }
+.contacts-heading h2 em { color: var(--terra); }
 .editorial-link--light { color: var(--dark-accent); border-color: var(--dark-accent); }
 .contacts-details { display: grid; grid-template-columns: repeat(2, 1fr); align-content: start; }
-.contacts-details > div { min-height: 190px; padding: 28px clamp(24px, 3vw, 48px); border-top: 1px solid var(--line-dark); }
-.contacts-details > div:nth-child(even) { border-left: 1px solid var(--line-dark); }
-.contacts-details small { display: block; margin-bottom: 20px; color: var(--dark-accent); font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
-.contacts-details p, .contacts-details a { display: block; margin: 0; color: var(--dark-text); font-family: var(--serif); font-size: clamp(23px, 2.1vw, 32px); line-height: 1.25; }
-.contacts-details > div:last-child p { color: var(--dark-text-soft); font-family: var(--sans); font-size: 13px; line-height: 1.65; }
-.contacts-details > div:last-child strong { color: var(--dark-text); font-weight: 500; }
+.contacts-details > div { min-height: 190px; padding: 28px clamp(24px, 3vw, 48px); border-top: 1px solid var(--line); }
+.contacts-details > div:nth-child(even) { border-left: 1px solid var(--line); }
+.contacts-details small { display: block; margin-bottom: 20px; color: var(--terra); font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.contacts-details p, .contacts-details a { display: block; margin: 0; color: var(--ink); font-family: var(--serif); font-size: clamp(23px, 2.1vw, 32px); line-height: 1.25; }
+.contacts-details a:hover { color: var(--terra); }
+.contacts-details > div:last-child p { color: var(--ink-soft); font-family: var(--sans); font-size: 13px; line-height: 1.65; }
+.contacts-details > div:last-child strong { color: var(--ink); font-weight: 600; }
 
 /* --- нумерованный паттерн: номер + заголовок + линия + текст --- */
 .numbered { display: grid; gap: clamp(20px, 2.4vw, 32px); }
@@ -725,9 +732,11 @@ p:last-child { margin-bottom: 0; }
 /* --- компактный блок врачей на странице «О центре» --- */
 .about-team { padding: clamp(64px, 7vw, 100px) 0; background: var(--paper-soft); }
 .about-team-inner { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.55fr); gap: 0 clamp(48px, 6vw, 100px); width: min(1240px, calc(100% - 100px)); margin: 0 auto; }
+.about-team-head { position: sticky; top: 96px; align-self: start; }
 .about-team-head h2 { margin: 0; color: var(--graphite); font-size: clamp(36px, 3vw, 48px); font-weight: 500; line-height: 1; letter-spacing: -.02em; }
 .about-team-head > p { max-width: 38ch; margin: 24px 0 0; color: var(--ink-soft); font-size: 13px; line-height: 1.7; }
 .about-team-grid { display: grid; }
+.about-doc p:not(.about-doc-role) + p { margin-top: 12px; }
 .about-doc { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 22px; align-items: start; padding: 22px 0; border-top: 1px solid var(--line); }
 .about-team-grid .about-doc:last-child { border-bottom: 1px solid var(--line); }
 .about-doc-ph { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; object-position: top; background: var(--ornament); filter: saturate(.82); }
@@ -737,6 +746,7 @@ span.about-doc-ph { display: grid; place-items: center; color: var(--terra); fon
 .about-doc p:not(.about-doc-role) { margin: 0; color: var(--ink-soft); font-size: 13px; line-height: 1.6; }
 @media (max-width: 1040px) {
   .about-team-inner { grid-template-columns: 1fr; width: min(760px, calc(100% - 64px)); gap: 40px; }
+  .about-team-head { position: static; }
 }
 
 .editorial-cta { position: relative; display: grid; place-items: center; min-height: 630px; overflow: hidden; padding: 90px 20px; background: var(--dark); color: var(--dark-text); text-align: center; }
